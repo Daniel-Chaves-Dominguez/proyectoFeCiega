@@ -1,6 +1,6 @@
 package Jugador;
 
-import Jugador.Posicion;
+import Equipo.Posicion;
 import java.util.Objects;
 
 
