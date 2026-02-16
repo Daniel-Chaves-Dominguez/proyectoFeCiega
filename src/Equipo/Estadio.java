@@ -2,9 +2,8 @@ package Equipo;
 
 import java.util.Objects;
 
-public class Estadio {
+public class Estadio extends Construccion {
 
-    private String nombre;
     private int capacidad;
     private boolean techado;
     private double ingresos;
@@ -12,19 +11,11 @@ public class Estadio {
     public Estadio() {
     }
 
-    public Estadio(String nombre, int capacidad, boolean techado, double ingresos) {
-        this.nombre = nombre;
+    public Estadio(String nombre, String ubicacion, double presupuestoAnual, boolean enServicio, int capacidad, boolean techado, double ingresos) {
+        super(nombre, ubicacion, presupuestoAnual, enServicio);
         this.capacidad = capacidad;
         this.techado = techado;
         this.ingresos = ingresos;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public int getCapacidad() {
@@ -53,6 +44,7 @@ public class Estadio {
 
     @Override
     public String toString() {
+        // Usamos 'nombre' que es el atributo que hereda de Construccion
         return nombre;
     }
 
@@ -60,6 +52,7 @@ public class Estadio {
     public boolean equals(Object o) {
         if (!(o instanceof Estadio)) return false;
         Estadio estadio = (Estadio) o;
+        // Comparamos el nombre que heredamos
         return Objects.equals(nombre, estadio.nombre);
     }
 
@@ -68,4 +61,3 @@ public class Estadio {
         return Objects.hash(nombre);
     }
 }
-

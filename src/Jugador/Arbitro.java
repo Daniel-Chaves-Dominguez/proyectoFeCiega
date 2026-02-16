@@ -55,7 +55,7 @@ public class Arbitro extends Persona {
 
     @Override
     public String toString() {
-        return "Árbitro: " + nombre;
+        return "Árbitro: " + this.getNombre();
     }
 
     @Override

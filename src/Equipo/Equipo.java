@@ -1,24 +1,32 @@
 package Equipo;
 
 import Jugador.Deportista;
-
+import Jugador.Entrenador;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
 public class Equipo {
 
+    // Tus atributos originales
     private String nombre;
     private int titulos;
     private boolean clasificado;
     private double presupuesto;
 
+
     private ArrayList<Deportista> jugadores;
     private HashMap<Integer, Deportista> jugadoresPorDorsal;
+    private ArrayList<Entrenador> cuerpoTecnico;
+    private ArrayList<String> patrocinadores;
+    private HashMap<String, String> records;
 
     public Equipo() {
-        jugadores = new ArrayList<>();
-        jugadoresPorDorsal = new HashMap<>();
+        this.jugadores = new ArrayList<>();
+        this.jugadoresPorDorsal = new HashMap<>();
+        this.cuerpoTecnico = new ArrayList<>();
+        this.patrocinadores = new ArrayList<>();
+        this.records = new HashMap<>();
     }
 
     public Equipo(String nombre, int titulos, boolean clasificado, double presupuesto) {
@@ -29,10 +37,39 @@ public class Equipo {
         this.presupuesto = presupuesto;
     }
 
+
+
+    public void anhadirJugador(Deportista j) {
+        jugadores.add(j);
+        jugadoresPorDorsal.put(j.getDorsal(), j);
+    }
+
+    public void eliminarJugador(Deportista j) {
+        jugadores.remove(j);
+        jugadoresPorDorsal.remove(j.getDorsal());
+    }
+
+    public Deportista buscarJugador(int dorsal) {
+        return jugadoresPorDorsal.get(dorsal);
+    }
+
+
+    public void mostrarPlantilla() {
+        for (Deportista j : jugadores) { // BUCLE 1
+            if (j != null) { // CONDICIONAL 1
+                System.out.println(j.getNombre() + " - Dorsal: " + j.getDorsal());
+            }
+        }
+    }
+
+    public void anhadirEntrenador(Entrenador e) {
+        cuerpoTecnico.add(e);
+    }
+
+
     public String getNombre() {
         return nombre;
     }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -40,7 +77,6 @@ public class Equipo {
     public int getTitulos() {
         return titulos;
     }
-
     public void setTitulos(int titulos) {
         this.titulos = titulos;
     }
@@ -64,24 +100,19 @@ public class Equipo {
     public ArrayList<Deportista> getJugadores() {
         return jugadores;
     }
-
-    public void añadirJugador(Deportista j) {
-        jugadores.add(j);
-        jugadoresPorDorsal.put(j.getDorsal(), j);
+    public ArrayList<Entrenador> getCuerpoTecnico() {
+        return cuerpoTecnico;
     }
-
-    public Deportista buscarJugador(int dorsal) {
-        return jugadoresPorDorsal.get(dorsal);
+    public ArrayList<String> getPatrocinadores() {
+        return patrocinadores;
     }
-
-    public void eliminarJugador(Deportista j) {
-        jugadores.remove(j);
-        jugadoresPorDorsal.remove(j.getDorsal());
+    public HashMap<String, String> getRecords() {
+        return records;
     }
 
     @Override
     public String toString() {
-        return nombre;
+        return "Equipo: " + nombre + " | Títulos: " + titulos + " | Presupuesto: " + presupuesto + "€";
     }
 
     @Override

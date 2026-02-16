@@ -64,7 +64,7 @@ public class Partido {
 
     @Override
     public String toString() {
-        return local + " " + golesLocal + " - " + golesVisitante + " " + visitante;
+        return "Partido de " + fase + ": " + local + " " + golesLocal + " - " + golesVisitante + " " + visitante;
     }
 
     @Override

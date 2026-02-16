@@ -14,8 +14,7 @@ public class Deportista extends Persona {
     public Deportista() {
     }
 
-    public Deportista (String nombre, int edad, boolean activo, double salario,
-                   Posicion posicion, int dorsal, double valorMercado, boolean titular) {
+    public Deportista (String nombre, int edad, boolean activo, double salario, Posicion posicion, int dorsal, double valorMercado, boolean titular) {
         super(nombre, edad, activo, salario);
         this.posicion = posicion;
         this.dorsal = dorsal;

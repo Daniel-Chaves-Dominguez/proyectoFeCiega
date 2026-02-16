@@ -64,6 +64,10 @@ public class Temporada {
         partidos.add(p);
     }
 
+    public void eliminarPartido(Partido p) {
+        partidos.remove(p);
+    }
+
     @Override
     public String toString() {
         return "Temporada " + anho;

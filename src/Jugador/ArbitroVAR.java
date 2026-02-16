@@ -10,9 +10,7 @@ public class ArbitroVAR extends Arbitro {
     public ArbitroVAR() {
     }
 
-    public ArbitroVAR(String nombre, int edad, boolean activo, double salario,
-                      int partidosDirigidos, boolean internacional, double puntuacion, String pais,
-                      boolean certificadoVAR, int revisiones, double precision, String tecnologia) {
+    public ArbitroVAR(String nombre, int edad, boolean activo, double salario, int partidosDirigidos, boolean internacional, double puntuacion, String pais, boolean certificadoVAR, int revisiones, double precision, String tecnologia) {
         super(nombre, edad, activo, salario, partidosDirigidos, internacional, puntuacion, pais);
         this.certificadoVAR = certificadoVAR;
         this.revisiones = revisiones;
