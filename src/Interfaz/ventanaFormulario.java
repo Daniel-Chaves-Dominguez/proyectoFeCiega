@@ -4,12 +4,12 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class VentanaFormulario extends JFrame {
+public class ventanaFormulario extends JFrame {
 
     private JTextField nombreField;
     private JButton enviarButton;
 
-    public VentanaFormulario() {
+    public ventanaFormulario() {
         setTitle("Formulario Futbol");
         setSize(300,150);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

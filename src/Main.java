@@ -1,7 +1,6 @@
 import Equipo.*;
 import Jugador.*;
-import excepciones.*;
-import Interfaz.VentanaFormulario;
+import Interfaz.ventanaFormulario;
 import util.JsonUtil;
 
 public class Main {
@@ -9,7 +8,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         // Ventana formulario
-        VentanaFormulario ventana = new VentanaFormulario();
+        ventanaFormulario ventana = new ventanaFormulario();
         ventana.setVisible(true);
 
         // Crear equipos

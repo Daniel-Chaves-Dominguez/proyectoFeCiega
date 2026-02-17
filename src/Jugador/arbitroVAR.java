@@ -1,16 +1,16 @@
 package Jugador;
 
-public class ArbitroVAR extends Arbitro {
+public class arbitroVAR extends Arbitro {
 
     private boolean certificadoVAR;
     private int revisiones;
     private double precision;
     private String tecnologia;
 
-    public ArbitroVAR() {
+    public arbitroVAR() {
     }
 
-    public ArbitroVAR(String nombre, int edad, boolean activo, double salario, int partidosDirigidos, boolean internacional, double puntuacion, String pais, boolean certificadoVAR, int revisiones, double precision, String tecnologia) {
+    public arbitroVAR(String nombre, int edad, boolean activo, double salario, int partidosDirigidos, boolean internacional, double puntuacion, String pais, boolean certificadoVAR, int revisiones, double precision, String tecnologia) {
         super(nombre, edad, activo, salario, partidosDirigidos, internacional, puntuacion, pais);
         this.certificadoVAR = certificadoVAR;
         this.revisiones = revisiones;

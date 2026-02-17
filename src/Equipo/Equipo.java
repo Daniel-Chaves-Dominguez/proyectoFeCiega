@@ -8,7 +8,6 @@ import java.util.Objects;
 
 public class Equipo {
 
-    // Tus atributos originales
     private String nombre;
     private int titulos;
     private boolean clasificado;
@@ -55,8 +54,8 @@ public class Equipo {
 
 
     public void mostrarPlantilla() {
-        for (Deportista j : jugadores) { // BUCLE 1
-            if (j != null) { // CONDICIONAL 1
+        for (Deportista j : jugadores) {
+            if (j != null) {
                 System.out.println(j.getNombre() + " - Dorsal: " + j.getDorsal());
             }
         }
