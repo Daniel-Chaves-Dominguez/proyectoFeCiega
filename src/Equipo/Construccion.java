@@ -29,7 +29,9 @@ public class Construccion {
     public String getUbicacion() {
         return ubicacion;
     }
-    public void setUbicacion(String ubicacion) { this.ubicacion = ubicacion; }
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
+    }
 
     public double getPresupuestoAnual() {
         return presupuestoAnual;

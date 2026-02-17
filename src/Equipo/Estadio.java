@@ -44,7 +44,6 @@ public class Estadio extends Construccion {
 
     @Override
     public String toString() {
-        // Usamos 'nombre' que es el atributo que hereda de Construccion
         return nombre;
     }
 
@@ -52,7 +51,6 @@ public class Estadio extends Construccion {
     public boolean equals(Object o) {
         if (!(o instanceof Estadio)) return false;
         Estadio estadio = (Estadio) o;
-        // Comparamos el nombre que heredamos
         return Objects.equals(nombre, estadio.nombre);
     }
 
