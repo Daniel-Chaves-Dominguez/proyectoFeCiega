@@ -1,7 +1,7 @@
-package Equipo;
+package equipo;
 
-import Jugador.Deportista;
-import Jugador.Entrenador;
+import jugador.Deportista;
+import jugador.Entrenador;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
@@ -39,6 +39,10 @@ public class Equipo {
 
 
     public void anhadirJugador(Deportista j) {
+        if (jugadoresPorDorsal.containsKey(j.getDorsal())) {
+            System.out.println("Ya existe un jugador con el dorsal " + j.getDorsal());
+            return;
+        }
         jugadores.add(j);
         jugadoresPorDorsal.put(j.getDorsal(), j);
     }
@@ -112,6 +116,21 @@ public class Equipo {
     @Override
     public String toString() {
         return "Equipo: " + nombre + " | Títulos: " + titulos + " | Presupuesto: " + presupuesto + "€";
+    }
+
+    public String toJson() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("{ \"nombre\": \"").append(nombre).append("\", ");
+        sb.append("\"titulos\": ").append(titulos).append(", ");
+        sb.append("\"presupuesto\": ").append(presupuesto).append(", ");
+        sb.append("\"jugadores\": [");
+        for (Deportista j : jugadores) {
+            sb.append("{ \"nombre\": \"").append(j.getNombre()).append("\", ");
+            sb.append("\"dorsal\": ").append(j.getDorsal()).append(" },");
+        }
+        if (!jugadores.isEmpty()) sb.setLength(sb.length() - 1);
+        sb.append("] }");
+        return sb.toString();
     }
 
     @Override

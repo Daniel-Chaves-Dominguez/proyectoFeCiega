@@ -1,19 +1,21 @@
-package Interfaz;
+package interfaz;
 
-import Equipo.Equipo;
+import equipo.Equipo;
 
+import util.JsonUtil;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
-public class ventanaFormulario extends JFrame {
+public class VentanaFormulario extends JFrame {
 
     private JTextField nombreField;
     private JTextField titulosField;
     private JTextField presupuestoField;
     private JButton botonCrear;
 
-    public ventanaFormulario() {
+    public VentanaFormulario() {
 
         setTitle("Crear Equipo");
         setSize(300,250);
@@ -61,20 +63,31 @@ public class ventanaFormulario extends JFrame {
                     int titulos = Integer.parseInt(titulosField.getText());
                     double presupuesto = Double.parseDouble(presupuestoField.getText());
 
-                    // Condicional 1
                     if (nombre.isEmpty()) {
                         JOptionPane.showMessageDialog(null, "El nombre no puede estar vacío");
                         return;
                     }
 
-                    // Condicional 2
                     if (titulos < 0) {
                         JOptionPane.showMessageDialog(null, "Los títulos no pueden ser negativos");
                         return;
                     }
 
+                    if (presupuesto < 0) {
+                        JOptionPane.showMessageDialog(null, "El presupuesto no puede ser negativo");
+                        return;
+                    }
+
                     // Crear objeto Equipo (clasificado por defecto false)
                     Equipo equipo = new Equipo(nombre, titulos, false, presupuesto);
+
+                    // Guardar equipo en JSON
+                    try {
+                        String equipoJson = "{ \"nombre\": \"" + nombre + "\", \"titulos\": " + titulos + ", \"presupuesto\": " + presupuesto + " }";
+                        JsonUtil.escribirJson("equipo.json", equipoJson);
+                    } catch (IOException ioException) {
+                        JOptionPane.showMessageDialog(null, "Error guardando el archivo JSON");
+                    }
 
                     // Mostrar información usando toString
                     JOptionPane.showMessageDialog(null,

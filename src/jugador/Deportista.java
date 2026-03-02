@@ -1,6 +1,8 @@
-package Jugador;
+package jugador;
 
-import Equipo.Posicion;
+import equipo.Posicion;
+import excepciones.EdadInvalidaExcepcion;
+
 import java.util.Objects;
 
 
@@ -54,9 +56,19 @@ public class Deportista extends Persona {
         this.titular = titular;
     }
 
+    public String estadoTitular() {
+        if (titular) return "Titular";
+        return "Suplente";
+    }
+
+    public void setEdadConExcepcion(int edad) throws EdadInvalidaExcepcion {
+        if (edad < 16 || edad > 40) throw new EdadInvalidaExcepcion("Edad inválida para deportista");
+        super.setEdad(edad);
+    }
+
     @Override
     public String toString() {
-        return nombre + " (" + posicion + ") #" + dorsal;
+        return nombre + " (" + posicion + ") #" + dorsal + " | Edad: " + getEdad();
     }
 
     @Override

@@ -1,4 +1,6 @@
-package Equipo;
+package equipo;
+
+import excepciones.TemporadaFinalizadaExcepcion;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -60,13 +62,30 @@ public class Temporada {
         return partidos;
     }
 
-    public void anhadirPartido(Partido p) {
+    public void anhadirPartido(Partido p) throws TemporadaFinalizadaExcepcion {
+        if (finalizada) throw new TemporadaFinalizadaExcepcion("No se pueden añadir partidos a una temporada finalizada");
         partidos.add(p);
     }
 
-    public void eliminarPartido(Partido p) {
+    public void eliminarPartido (Partido p) {
         partidos.remove(p);
     }
+
+    public void mostrarPartidos() {
+        for (Partido p : partidos) {
+            System.out.println(p);
+        }
+    }
+
+    public Partido buscarPartidoPorEquipos(Equipo local, Equipo visitante) {
+        for (Partido p : partidos) {
+            if (p.getLocal().equals(local) && p.getVisitante().equals(visitante)) {
+                return p;
+            }
+        }
+        return null;
+    }
+
 
     @Override
     public String toString() {

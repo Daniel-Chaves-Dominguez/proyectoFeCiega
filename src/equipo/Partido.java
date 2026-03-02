@@ -1,6 +1,5 @@
-package Equipo;
+package equipo;
 
-import Equipo.faseChampions;
 import java.util.Objects;
 
 public class Partido {

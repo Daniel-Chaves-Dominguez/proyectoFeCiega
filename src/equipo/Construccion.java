@@ -1,4 +1,4 @@
-package Equipo;
+package equipo;
 
 import java.util.Objects;
 

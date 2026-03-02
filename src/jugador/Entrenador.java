@@ -1,4 +1,6 @@
-package Jugador;
+package jugador;
+
+import excepciones.EdadInvalidaExcepcion;
 
 import java.util.Objects;
 
@@ -53,9 +55,19 @@ public class Entrenador extends Persona {
         this.estiloJuego = estiloJuego;
     }
 
+    public void setEdadConExcepcion(int edad) throws EdadInvalidaExcepcion {
+        if (edad < 25 || edad > 70) throw new EdadInvalidaExcepcion("Edad inválida para entrenador");
+        super.setEdad(edad);
+    }
+
+    public String nivelEntrenador() {
+        if (experiencia > 10) return "Veterano";
+        return "Junior";
+    }
+
     @Override
     public String toString() {
-        return "Entrenador: " + nombre;
+        return "Entrenador: " + nombre + " | Experiencia: " + experiencia + " años | Principal: " + principal;
     }
 
     @Override

@@ -1,14 +1,16 @@
-import Equipo.*;
-import Jugador.*;
-import Interfaz.ventanaFormulario;
+import equipo.*;
+import jugador.*;
+import interfaz.VentanaFormulario;
 import util.JsonUtil;
+
+import java.io.IOException;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
 
         // Ventana formulario
-        ventanaFormulario ventana = new ventanaFormulario();
+        VentanaFormulario ventana = new VentanaFormulario();
         ventana.setVisible(true);
 
         // Crear equipos
@@ -31,7 +33,29 @@ public class Main {
         temporada.anhadirPartido(p1);
         temporada.anhadirPartido(p2);
 
-        // Escribir JSON
-        JsonUtil.escribirJson("temporada.json", String.valueOf(temporada));
+
+        try {
+            StringBuilder sb = new StringBuilder();
+            sb.append("{ \"anho\": \"").append(temporada.getAnho()).append("\", ");
+            sb.append("\"finalizada\": ").append(temporada.isFinalizada()).append(", ");
+            sb.append("\"premios\": ").append(temporada.getPremios()).append(", ");
+            sb.append("\"partidosTotales\": ").append(temporada.getPartidosTotales()).append(", ");
+            sb.append("\"partidos\": [");
+
+            for (Partido p : temporada.getPartidos()) {
+                sb.append("{ \"local\": \"").append(p.getLocal().getNombre()).append("\", ");
+                sb.append("\"visitante\": \"").append(p.getVisitante().getNombre()).append("\", ");
+                sb.append("\"golesLocal\": ").append(p.getGolesLocal()).append(", ");
+                sb.append("\"golesVisitante\": ").append(p.getGolesVisitante()).append(", ");
+                sb.append("\"fase\": \"").append(p.getFase()).append("\" },");
+            }
+            if (!temporada.getPartidos().isEmpty()) sb.setLength(sb.length() - 1); // quitar última coma
+            sb.append("] }");
+
+            JsonUtil.escribirJson("temporada.json", sb.toString());
+
+        } catch (IOException ioException) {
+            System.out.println("Error guardando el archivo JSON");
+        }
     }
 }
