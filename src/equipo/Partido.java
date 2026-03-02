@@ -10,7 +10,8 @@ public class Partido {
     private int golesVisitante;
     private FaseChampions fase;
 
-    public Partido() {}
+    public Partido() {
+    }
 
     public Partido(Equipo local, Equipo visitante, int golesLocal, int golesVisitante, FaseChampions fase) {
         this.local = local;
@@ -20,35 +21,58 @@ public class Partido {
         this.fase = fase;
     }
 
-    public Equipo getLocal() { return local; }
-    public void setLocal(Equipo local) { this.local = local; }
+    public Equipo getLocal() {
+        return local;
+    }
 
-    public Equipo getVisitante() { return visitante; }
-    public void setVisitante(Equipo visitante) { this.visitante = visitante; }
+    public void setLocal(Equipo local) {
+        this.local = local;
+    }
 
-    public int getGolesLocal() { return golesLocal; }
-    public void setGolesLocal(int golesLocal) { this.golesLocal = golesLocal; }
+    public Equipo getVisitante() {
+        return visitante;
+    }
 
-    public int getGolesVisitante() { return golesVisitante; }
-    public void setGolesVisitante(int golesVisitante) { this.golesVisitante = golesVisitante; }
+    public void setVisitante(Equipo visitante) {
+        this.visitante = visitante;
+    }
 
-    public FaseChampions getFase() { return fase; }
-    public void setFase(FaseChampions fase) { this.fase = fase; }
+    public int getGolesLocal() {
+        return golesLocal;
+    }
+
+    public void setGolesLocal(int golesLocal) {
+        this.golesLocal = golesLocal;
+    }
+
+    public int getGolesVisitante() {
+        return golesVisitante;
+    }
+
+    public void setGolesVisitante(int golesVisitante) {
+        this.golesVisitante = golesVisitante;
+    }
+
+    public FaseChampions getFase() {
+        return fase;
+    }
+
+    public void setFase(FaseChampions fase) {
+        this.fase = fase;
+    }
 
     @Override
     public String toString() {
-<<<<<<< HEAD
         return "Partido de " + fase + ": " + local + " " + golesLocal + " - " + golesVisitante + " " + visitante;
-=======
-        return local.getNombre() + " " + golesLocal + " - " + golesVisitante + " " + visitante.getNombre();
->>>>>>> 3572b61 (actualized)
     }
 
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Partido)) return false;
-        Partido p = (Partido) o;
-        return Objects.equals(local, p.local) && Objects.equals(visitante, p.visitante) && fase == p.fase;
+        Partido partido = (Partido) o;
+        return Objects.equals(local, partido.local)
+                && Objects.equals(visitante, partido.visitante)
+                && fase == partido.fase;
     }
 
     @Override

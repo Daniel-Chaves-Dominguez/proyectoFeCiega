@@ -82,4 +82,3 @@ public class Entrenador extends Persona {
         return Objects.hash(super.hashCode(), experiencia);
     }
 }
-
