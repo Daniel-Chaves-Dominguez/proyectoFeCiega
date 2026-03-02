@@ -1,8 +1,11 @@
 package interfaz;
 
+<<<<<<<< HEAD:src/interfaz/VentanaFormulario.java
 import equipo.Equipo;
 
 import util.JsonUtil;
+========
+>>>>>>>> origin/master:src/Interfaz/ventanaFormulario.java
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,52 +14,36 @@ import java.io.IOException;
 public class VentanaFormulario extends JFrame {
 
     private JTextField nombreField;
-    private JTextField titulosField;
-    private JTextField presupuestoField;
-    private JButton botonCrear;
+    private JButton enviarButton;
 
     public VentanaFormulario() {
+<<<<<<<< HEAD:src/interfaz/VentanaFormulario.java
 
         setTitle("Crear Equipo");
         setSize(300,250);
+========
+        setTitle("Formulario Futbol");
+        setSize(300,150);
+>>>>>>>> origin/master:src/Interfaz/ventanaFormulario.java
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
 
-        // Nombre
-        JLabel nombreLabel = new JLabel("Nombre del club:");
-        nombreLabel.setBounds(20,20,100,25);
-        add(nombreLabel);
+        JLabel label = new JLabel("Nombre del equipo:");
+        label.setBounds(10,10,200,25);
+        add(label);
 
         nombreField = new JTextField();
-        nombreField.setBounds(20,45,200,25);
+        nombreField.setBounds(10,40,200,25);
         add(nombreField);
 
-        // Títulos
-        JLabel titulosLabel = new JLabel("Títulos del equipo:");
-        titulosLabel.setBounds(20,80,100,25);
-        add(titulosLabel);
+        enviarButton = new JButton("Enviar");
+        enviarButton.setBounds(10,80,100,25);
+        add(enviarButton);
 
-        titulosField = new JTextField();
-        titulosField.setBounds(20,105,200,25);
-        add(titulosField);
-
-        // Presupuesto
-        JLabel presupuestoLabel = new JLabel("Presupuesto del club:");
-        presupuestoLabel.setBounds(20,140,100,25);
-        add(presupuestoLabel);
-
-        presupuestoField = new JTextField();
-        presupuestoField.setBounds(20,165,200,25);
-        add(presupuestoField);
-
-        // Botón
-        botonCrear = new JButton("Crear");
-        botonCrear.setBounds(20,195,100,25);
-        add(botonCrear);
-
-        botonCrear.addActionListener(new ActionListener() {
+        enviarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+<<<<<<<< HEAD:src/interfaz/VentanaFormulario.java
 
                 try {
                     String nombre = nombreField.getText();
@@ -97,6 +84,10 @@ public class VentanaFormulario extends JFrame {
                     JOptionPane.showMessageDialog(null,
                             "Introduce números válidos en títulos y presupuesto");
                 }
+========
+                String nombre = nombreField.getText();
+                JOptionPane.showMessageDialog(null, "El equipo ingresado es: " + nombre);
+>>>>>>>> origin/master:src/Interfaz/ventanaFormulario.java
             }
         });
     }
