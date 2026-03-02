@@ -8,8 +8,7 @@ public class Estadio extends Construccion {
     private boolean techado;
     private double ingresos;
 
-    public Estadio() {
-    }
+    public Estadio() {}
 
     public Estadio(String nombre, String ubicacion, double presupuestoAnual, boolean enServicio, int capacidad, boolean techado, double ingresos) {
         super(nombre, ubicacion, presupuestoAnual, enServicio);
@@ -18,44 +17,42 @@ public class Estadio extends Construccion {
         this.ingresos = ingresos;
     }
 
+<<<<<<< HEAD
     public int getCapacidad() {
         return capacidad;
     }
+=======
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public void setCapacidad(int capacidad) {
-        this.capacidad = capacidad;
-    }
+    public int getCapacidad() { return capacidad; }
+    public void setCapacidad(int capacidad) { this.capacidad = capacidad; }
 
-    public boolean isTechado() {
-        return techado;
-    }
+    public boolean isTechado() { return techado; }
+    public void setTechado(boolean techado) { this.techado = techado; }
+>>>>>>> 3572b61 (actualized)
 
-    public void setTechado(boolean techado) {
-        this.techado = techado;
-    }
-
-    public double getIngresos() {
-        return ingresos;
-    }
-
-    public void setIngresos(double ingresos) {
-        this.ingresos = ingresos;
-    }
+    public double getIngresos() { return ingresos; }
+    public void setIngresos(double ingresos) { this.ingresos = ingresos; }
 
     @Override
     public String toString() {
-        return nombre;
+        return nombre + " (" + capacidad + " espectadores)";
     }
 
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Estadio)) return false;
-        Estadio estadio = (Estadio) o;
-        return Objects.equals(nombre, estadio.nombre);
+        Estadio e = (Estadio) o;
+        return Objects.equals(nombre, e.nombre);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(nombre);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 3572b61 (actualized)

@@ -1,7 +1,12 @@
 package Equipo;
 
 import Jugador.Deportista;
+<<<<<<< HEAD
 import Jugador.Entrenador;
+=======
+import excepciones.PresupuestoInsuficienteException;
+
+>>>>>>> 3572b61 (actualized)
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
@@ -36,6 +41,7 @@ public class Equipo {
         this.presupuesto = presupuesto;
     }
 
+<<<<<<< HEAD
 
 
     public void anhadirJugador(Deportista j) {
@@ -79,11 +85,23 @@ public class Equipo {
     public void setTitulos(int titulos) {
         this.titulos = titulos;
     }
+=======
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public boolean isClasificado() {
-        return clasificado;
-    }
+    public int getTitulos() { return titulos; }
+    public void setTitulos(int titulos) { this.titulos = titulos; }
 
+    public boolean isClasificado() { return clasificado; }
+    public void setClasificado(boolean clasificado) { this.clasificado = clasificado; }
+
+    public double getPresupuesto() { return presupuesto; }
+    public void setPresupuesto(double presupuesto) { this.presupuesto = presupuesto; }
+>>>>>>> 3572b61 (actualized)
+
+    public ArrayList<Deportista> getJugadores() { return jugadores; }
+
+<<<<<<< HEAD
     public void setClasificado(boolean clasificado) {
         this.clasificado = clasificado;
     }
@@ -101,6 +119,15 @@ public class Equipo {
     }
     public ArrayList<Entrenador> getCuerpoTecnico() {
         return cuerpoTecnico;
+=======
+    public void añadirJugador(Deportista j) throws PresupuestoInsuficienteException {
+        if (j.getValorMercado() > presupuesto) {
+            throw new PresupuestoInsuficienteException("No hay presupuesto suficiente para fichar a " + j.getNombre());
+        }
+        jugadores.add(j);
+        jugadoresPorDorsal.put(j.getDorsal(), j);
+        presupuesto -= j.getValorMercado();
+>>>>>>> 3572b61 (actualized)
     }
     public ArrayList<String> getPatrocinadores() {
         return patrocinadores;
@@ -111,14 +138,18 @@ public class Equipo {
 
     @Override
     public String toString() {
+<<<<<<< HEAD
         return "Equipo: " + nombre + " | Títulos: " + titulos + " | Presupuesto: " + presupuesto + "€";
+=======
+        return nombre + " (Titulos: " + titulos + ")";
+>>>>>>> 3572b61 (actualized)
     }
 
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Equipo)) return false;
-        Equipo equipo = (Equipo) o;
-        return Objects.equals(nombre, equipo.nombre);
+        Equipo e = (Equipo) o;
+        return Objects.equals(nombre, e.nombre);
     }
 
     @Override

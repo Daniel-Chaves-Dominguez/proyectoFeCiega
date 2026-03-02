@@ -1,6 +1,11 @@
 import Equipo.*;
 import Jugador.*;
+<<<<<<< HEAD
 import Interfaz.ventanaFormulario;
+=======
+import excepciones.*;
+import Interfaz.VentanaFormulario;
+>>>>>>> 3572b61 (actualized)
 import util.JsonUtil;
 
 public class Main {
@@ -8,7 +13,11 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         // Ventana formulario
+<<<<<<< HEAD
         ventanaFormulario ventana = new ventanaFormulario();
+=======
+        VentanaFormulario ventana = new VentanaFormulario();
+>>>>>>> 3572b61 (actualized)
         ventana.setVisible(true);
 
         // Crear equipos
@@ -21,8 +30,13 @@ public class Main {
         Deportista j2 = new Deportista("Haaland", 24, true, 3000,
                 Posicion.DELANTERO, 9, 180_000_000, true);
 
+<<<<<<< HEAD
         madrid.anhadirJugador(j1);
         city.anhadirJugador(j2);
+=======
+        madrid.añadirJugador(j1);
+        city.añadirJugador(j2);
+>>>>>>> 3572b61 (actualized)
 
         // Crear temporada
         Temporada temporada = new Temporada("2024/25", false, 200_000_000, 125);
