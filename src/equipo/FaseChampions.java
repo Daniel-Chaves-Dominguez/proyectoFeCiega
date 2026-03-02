@@ -1,5 +1,5 @@
 package equipo;
 
-public enum faseChampions {
+public enum FaseChampions {
     GRUPOS, OCTAVOS, CUARTOS, SEMIFINAL, FINAL
 }

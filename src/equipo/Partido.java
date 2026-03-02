@@ -8,11 +8,11 @@ public class Partido {
     private Equipo visitante;
     private int golesLocal;
     private int golesVisitante;
-    private faseChampions fase;
+    private FaseChampions fase;
 
     public Partido() {}
 
-    public Partido(Equipo local, Equipo visitante, int golesLocal, int golesVisitante, faseChampions fase) {
+    public Partido(Equipo local, Equipo visitante, int golesLocal, int golesVisitante, FaseChampions fase) {
         this.local = local;
         this.visitante = visitante;
         this.golesLocal = golesLocal;
@@ -32,8 +32,8 @@ public class Partido {
     public int getGolesVisitante() { return golesVisitante; }
     public void setGolesVisitante(int golesVisitante) { this.golesVisitante = golesVisitante; }
 
-    public faseChampions getFase() { return fase; }
-    public void setFase(faseChampions fase) { this.fase = fase; }
+    public FaseChampions getFase() { return fase; }
+    public void setFase(FaseChampions fase) { this.fase = fase; }
 
     @Override
     public String toString() {

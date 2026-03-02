@@ -28,8 +28,8 @@ public class Main {
 
         // Crear temporada
         Temporada temporada = new Temporada("2024/25", false, 200_000_000, 125);
-        Partido p1 = new Partido(madrid, city, 2, 1, faseChampions.SEMIFINAL);
-        Partido p2 = new Partido(city, madrid, 3, 3, faseChampions.GRUPOS);
+        Partido p1 = new Partido(madrid, city, 2, 1, FaseChampions.SEMIFINAL);
+        Partido p2 = new Partido(city, madrid, 3, 3, FaseChampions.GRUPOS);
         temporada.anhadirPartido(p1);
         temporada.anhadirPartido(p2);
 
