@@ -1,103 +1,90 @@
 package interfaz;
 
-import equipo.Equipo;
-
-import util.JsonUtil;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
+import java.util.Random;
 
 public class VentanaFormulario extends JFrame {
 
-    private JTextField nombreField;
-    private JTextField titulosField;
-    private JTextField presupuestoField;
-    private JButton botonCrear;
+    private JTextField campoEquipo1;
+    private JTextField campoEquipo2;
+    private JButton botonJugar;
+    private JLabel labelResultado;
+    private JLabel labelPuntos;
+
+    private int puntosEquipo1 = 0;
+    private int puntosEquipo2 = 0;
 
     public VentanaFormulario() {
 
-        setTitle("Crear Equipo");
-        setSize(300,250);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(null);
+        setTitle("Simulador de Partido");
+        setSize(450, 350);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        // Nombre
-        JLabel nombreLabel = new JLabel("Nombre del club:");
-        nombreLabel.setBounds(20,20,100,25);
-        add(nombreLabel);
+        JPanel panel = new JPanel();
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
+        panel.setLayout(new GridLayout(7, 1, 10, 10));
 
-        nombreField = new JTextField();
-        nombreField.setBounds(20,45,200,25);
-        add(nombreField);
+        panel.add(new JLabel("Equipo 1:"));
+        campoEquipo1 = new JTextField();
+        panel.add(campoEquipo1);
 
-        // Títulos
-        JLabel titulosLabel = new JLabel("Títulos del equipo:");
-        titulosLabel.setBounds(20,80,100,25);
-        add(titulosLabel);
+        panel.add(new JLabel("Equipo 2:"));
+        campoEquipo2 = new JTextField();
+        panel.add(campoEquipo2);
 
-        titulosField = new JTextField();
-        titulosField.setBounds(20,105,200,25);
-        add(titulosField);
+        botonJugar = new JButton("Jugar Partido");
+        panel.add(botonJugar);
 
-        // Presupuesto
-        JLabel presupuestoLabel = new JLabel("Presupuesto del club:");
-        presupuestoLabel.setBounds(20,140,100,25);
-        add(presupuestoLabel);
+        labelResultado = new JLabel("Resultado: ---", SwingConstants.CENTER);
+        panel.add(labelResultado);
 
-        presupuestoField = new JTextField();
-        presupuestoField.setBounds(20,165,200,25);
-        add(presupuestoField);
+        labelPuntos = new JLabel("Puntos: ---", SwingConstants.CENTER);
+        panel.add(labelPuntos);
 
-        // Botón
-        botonCrear = new JButton("Crear");
-        botonCrear.setBounds(20,195,100,25);
-        add(botonCrear);
+        add(panel);
 
-        botonCrear.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        botonJugar.addActionListener((ActionEvent e) -> jugarPartido());
+    }
 
-                try {
-                    String nombre = nombreField.getText();
-                    int titulos = Integer.parseInt(titulosField.getText());
-                    double presupuesto = Double.parseDouble(presupuestoField.getText());
+    private void jugarPartido() {
 
-                    if (nombre.isEmpty()) {
-                        JOptionPane.showMessageDialog(null, "El nombre no puede estar vacío");
-                        return;
-                    }
+        String equipo1 = campoEquipo1.getText().trim();
+        String equipo2 = campoEquipo2.getText().trim();
 
-                    if (titulos < 0) {
-                        JOptionPane.showMessageDialog(null, "Los títulos no pueden ser negativos");
-                        return;
-                    }
 
-                    if (presupuesto < 0) {
-                        JOptionPane.showMessageDialog(null, "El presupuesto no puede ser negativo");
-                        return;
-                    }
+        if (equipo1.isEmpty() || equipo2.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debes escribir ambos equipos");
+            return;
+        }
 
-                    // Crear objeto Equipo (clasificado por defecto false)
-                    Equipo equipo = new Equipo(nombre, titulos, false, presupuesto);
+        if (equipo1.equalsIgnoreCase(equipo2)) {
+            JOptionPane.showMessageDialog(this, "No se puede jugar un equipo contra sí mismo");
+            return;
+        }
 
-                    // Guardar equipo en JSON
-                    try {
-                        String equipoJson = "{ \"nombre\": \"" + nombre + "\", \"titulos\": " + titulos + ", \"presupuesto\": " + presupuesto + " }";
-                        JsonUtil.escribirJson("equipo.json", equipoJson);
-                    } catch (IOException ioException) {
-                        JOptionPane.showMessageDialog(null, "Error guardando el archivo JSON");
-                    }
+        Random random = new Random();
+        int goles1 = random.nextInt(4);
+        int goles2 = random.nextInt(4);
 
-                    // Mostrar información usando toString
-                    JOptionPane.showMessageDialog(null,
-                            "Equipo creado:\n" + equipo.toString());
+        if (goles1 > goles2) {
+            puntosEquipo1 += 3;
+            labelResultado.setText("Ha ganado " + equipo1 + ": 3 puntos");
+        } else if (goles2 > goles1) {
+            puntosEquipo2 += 3;
+            labelResultado.setText("Ha ganado " + equipo2 + ": 3 puntos");
+        } else {
+            puntosEquipo1 += 1;
+            puntosEquipo2 += 1;
+            labelResultado.setText("Empate: 1 punto para ambos");
+        }
 
-                } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null,
-                            "Introduce números válidos en títulos y presupuesto");
-                }
-            }
-        });
+        labelPuntos.setText(
+                equipo1 + ": " + puntosEquipo1 +
+                        " | " +
+                        equipo2 + ": " + puntosEquipo2
+        );
     }
 }
