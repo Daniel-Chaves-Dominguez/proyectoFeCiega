@@ -16,6 +16,9 @@ public class VentanaFormulario extends JFrame {
     private int puntosEquipo1 = 0;
     private int puntosEquipo2 = 0;
 
+    private String ultimoEquipo1 = "";
+    private String ultimoEquipo2 = "";
+
     public VentanaFormulario() {
 
         setTitle("Simulador de Partido");
@@ -53,6 +56,15 @@ public class VentanaFormulario extends JFrame {
 
         String equipo1 = campoEquipo1.getText().trim();
         String equipo2 = campoEquipo2.getText().trim();
+
+        if (!equipo1.equalsIgnoreCase(ultimoEquipo1) ||
+                !equipo2.equalsIgnoreCase(ultimoEquipo2)) {
+
+            puntosEquipo1 = 0;
+            puntosEquipo2 = 0;
+            ultimoEquipo1 = equipo1;
+            ultimoEquipo2 = equipo2;
+        }
 
 
         if (equipo1.isEmpty() || equipo2.isEmpty()) {
