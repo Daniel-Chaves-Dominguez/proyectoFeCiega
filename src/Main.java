@@ -36,7 +36,7 @@ public class Main {
 
         try {
             StringBuilder sb = new StringBuilder();
-            sb.append("{ \"anho\": \"").append(temporada.getAnho()).append("\", ");
+            sb.append("{ \"año\": \"").append(temporada.getAnho()).append("\", ");
             sb.append("\"finalizada\": ").append(temporada.isFinalizada()).append(", ");
             sb.append("\"premios\": ").append(temporada.getPremios()).append(", ");
             sb.append("\"partidosTotales\": ").append(temporada.getPartidosTotales()).append(", ");

@@ -1,6 +1,6 @@
 package equipo;
 
-import excepciones.TemporadaFinalizadaExcepcion;
+import excepciones.TemporadaFinalizadaException;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -62,8 +62,8 @@ public class Temporada {
         return partidos;
     }
 
-    public void anhadirPartido(Partido p) throws TemporadaFinalizadaExcepcion {
-        if (finalizada) throw new TemporadaFinalizadaExcepcion("No se pueden añadir partidos a una temporada finalizada");
+    public void anhadirPartido(Partido p) throws TemporadaFinalizadaException {
+        if (finalizada) throw new TemporadaFinalizadaException("No se pueden añadir partidos a una temporada finalizada");
         partidos.add(p);
     }
 

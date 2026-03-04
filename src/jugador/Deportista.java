@@ -1,7 +1,7 @@
 package jugador;
 
 import equipo.Posicion;
-import excepciones.EdadInvalidaExcepcion;
+import excepciones.EdadInvalidaException;
 
 import java.util.Objects;
 
@@ -61,8 +61,8 @@ public class Deportista extends Persona {
         return "Suplente";
     }
 
-    public void setEdadConExcepcion(int edad) throws EdadInvalidaExcepcion {
-        if (edad < 16 || edad > 40) throw new EdadInvalidaExcepcion("Edad inválida para deportista");
+    public void setEdadConException(int edad) throws EdadInvalidaException {
+        if (edad < 16 || edad > 40) throw new EdadInvalidaException("Edad inválida para deportista");
         super.setEdad(edad);
     }
 

@@ -1,6 +1,6 @@
 package jugador;
 
-import excepciones.EdadInvalidaExcepcion;
+import excepciones.EdadInvalidaException;
 
 import java.util.Objects;
 
@@ -55,8 +55,8 @@ public class Arbitro extends Persona {
         this.pais = pais;
     }
 
-    public void setEdadConExcepcion(int edad) throws EdadInvalidaExcepcion {
-        if (edad < 18 || edad > 75) throw new EdadInvalidaExcepcion("Edad inválida para árbitro");
+    public void setEdadConException(int edad) throws EdadInvalidaException {
+        if (edad < 18 || edad > 75) throw new EdadInvalidaException("Edad inválida para árbitro");
         super.setEdad(edad);
     }
 
