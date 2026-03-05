@@ -16,8 +16,30 @@ public class Deportista extends Persona {
     public Deportista() {
     }
 
-    public Deportista (String nombre, int edad, boolean activo, double salario, Posicion posicion, int dorsal, double valorMercado, boolean titular) {
+
+    public Deportista(String nombre, int edad, boolean activo, int salario, Posicion posicion, int dorsal, double valorMercado, boolean titular) {
         super(nombre, edad, activo, salario);
+
+        if (nombre == null || nombre.isEmpty()) {
+            throw new IllegalArgumentException("El nombre no puede ser nulo o vacío");
+        }
+
+        if (edad < 0) {
+            throw new IllegalArgumentException("La edad no puede ser negativa");
+        }
+
+        if (dorsal < 0) {
+            throw new IllegalArgumentException("El dorsal no puede ser negativo");
+        }
+
+        if (valorMercado < 0) {
+            throw new IllegalArgumentException("El valor de mercado no puede ser negativo");
+        }
+
+        this.nombre = nombre;
+        this.edad = edad;
+        this.activo = activo;
+        this.salario = salario;
         this.posicion = posicion;
         this.dorsal = dorsal;
         this.valorMercado = valorMercado;

@@ -30,6 +30,23 @@ public class Equipo {
 
     public Equipo(String nombre, int titulos, boolean clasificado, double presupuesto) {
         this();
+
+        if (nombre == null) {
+            throw new IllegalArgumentException("El nombre no puede ser nulo");
+        }
+
+        if (nombre.isEmpty()) {
+            throw new IllegalArgumentException("El nombre no puede estar vacío");
+        }
+
+        if (titulos < 0) {
+            throw new IllegalArgumentException("Los títulos no pueden ser negativos");
+        }
+
+        if (presupuesto < 0) {
+            throw new IllegalArgumentException("El presupuesto no puede ser negativo");
+        }
+
         this.nombre = nombre;
         this.titulos = titulos;
         this.clasificado = clasificado;

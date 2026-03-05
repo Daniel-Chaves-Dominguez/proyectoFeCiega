@@ -19,11 +19,15 @@ public class Temporada {
     }
 
     public Temporada(String anho, boolean finalizada, double premios, int partidosTotales) {
-        this();
+        if (anho == null || anho.isEmpty()) throw new IllegalArgumentException("Año no puede ser nulo o vacío");
+        if (premios < 0) throw new IllegalArgumentException("Premios no pueden ser negativos");
+        if (partidosTotales < 0) throw new IllegalArgumentException("Partidos totales no pueden ser negativos");
+
         this.anho = anho;
         this.finalizada = finalizada;
         this.premios = premios;
         this.partidosTotales = partidosTotales;
+        this.partidos = new ArrayList<>();
     }
 
     public String getAnho() {

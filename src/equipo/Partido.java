@@ -14,6 +14,11 @@ public class Partido {
     }
 
     public Partido(Equipo local, Equipo visitante, int golesLocal, int golesVisitante, FaseChampions fase) {
+        if (local == null || visitante == null) throw new IllegalArgumentException("Equipos no pueden ser nulos");
+        if (local.equals(visitante)) throw new IllegalArgumentException("Los equipos no pueden ser iguales");
+        if (golesLocal < 0) throw new IllegalArgumentException("Goles local no pueden ser negativos");
+        if (golesVisitante < 0) throw new IllegalArgumentException("Goles visitante no pueden ser negativos");
+
         this.local = local;
         this.visitante = visitante;
         this.golesLocal = golesLocal;
