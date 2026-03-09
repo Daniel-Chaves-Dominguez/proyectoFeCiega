@@ -263,3 +263,11 @@ Algunas mejoras que podrían añadirse en el futuro:
 * Sistema de clasificación automática de equipos
 
 ---
+
+## Contribuciones del equipo
+
+- **Carlos:** Se encargó del desarrollo completo del paquete `equipo`, implementando clases como `Equipo`, `Estadio`, `Partido`, `Temporada` y las enumeraciones relacionadas (`Posicion`, `FaseChampions`). También escribió los métodos principales y las validaciones de estas clases.
+
+- **Nacho:** Desarrolló todo el paquete `jugador`, incluyendo las clases `Deportista`, `Entrenador`, `Arbitro` y `ArbitroVAR`, así como la clase base `Persona`. Implementó la lógica interna de estas clases, métodos auxiliares y validaciones de atributos.
+
+- **Daniel:** Responsable de los paquetes `excepciones`, `interfaz` y `util`, además de los tests unitarios, la clase `Main` y la documentación del proyecto en este README. También me encargué de modificar y completar algunas clases existentes para corregir detalles, añadir excepciones personalizadas, capturarlas correctamente, y asegurar la integración general del proyecto, incluyendo la generación de archivos JSON y la interfaz gráfica.
